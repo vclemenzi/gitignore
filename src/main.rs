@@ -19,6 +19,16 @@ fn main() {
         return println!("This template dosen't exist!")
     }
 
+    if args.len() >= 3 {
+        match args[2].as_str() {
+            "--get" => {
+                println!("{}", content.text().unwrap().to_string());
+                return;
+            }
+            _ => { /* OK */ }
+        }
+    }
+
     // Create .gitignore
 
     let mut file = fs::File::create("./.gitignore").unwrap();
